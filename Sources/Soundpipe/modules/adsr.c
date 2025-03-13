@@ -75,8 +75,7 @@ int sp_adsr_compute(sp_data *sp, sp_adsr *p, SPFLOAT *in, SPFLOAT *out)
             p->timer++;
             *out = adsr_filter(sp, p);
             /* quick fix: uncomment if broken */
-            /* if(p->timer > p->atk_time) { */
-            if(*out > 0.99) {
+            if(p->timer > p->atk_time) {
                 p->mode = DECAY;
                 pole = tau2pole(sp, p, p->dec);
                 p->a = pole;
